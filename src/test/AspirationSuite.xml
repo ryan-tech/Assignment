@@ -1,0 +1,8 @@
+<suite name = "Aspiration">
+    <test name = "tests">
+        <classes>
+            <class name="com.QA.Tests.Aspiration.testAspirationHomepage"/>
+            <class name="com.QA.Tests.Aspiration.testAspirationProductsPage"/>
+        </classes>
+    </test>
+</suite>

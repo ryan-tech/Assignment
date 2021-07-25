@@ -1,0 +1,7 @@
+<suite name = "Swapi">
+    <test name = "Test">
+        <classes>
+            <class name="com.QA.Tests.swapi.SwapiTest"/>
+        </classes>
+    </test>
+</suite>
