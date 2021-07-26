@@ -1,7 +1,6 @@
 package com.QA.Tests.Aspiration;
 import com.QA.Pages.Aspiration.Homepage;
 
-import com.QA.Pages.BasePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -49,12 +48,4 @@ public class testAspirationHomepage {
         Assert.assertEquals(Homepage.getDriver().getCurrentUrl(), expectedUrl);
     }
 
-
-/*
-
-    @Test
-    public void debug() {
-        System.out.println("Successfully ran a failed test");
-        Assert.assertEquals(2, 1);
-    }*/
 }

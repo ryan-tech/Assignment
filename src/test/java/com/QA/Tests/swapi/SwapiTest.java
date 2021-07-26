@@ -15,18 +15,6 @@ import java.util.ArrayList;
 
 public class SwapiTest {
 
-/* Optional test case
-    @Test
-    public void testHomepageResponseCode() {
-        String url = "https://swapi.dev/";
-        given().
-                when().
-                get(url).
-                then().
-                assertThat().
-                statusCode(200);
-    }
-*/
     @Test
     public void testPeopleEndpointResponseCode() {
         // verifies that the people endpoint responds with a successful response code
@@ -135,7 +123,6 @@ public class SwapiTest {
             url = res.getString("next");
         }
 
-        //------------------------ASSERTIONS---------------------------//
 // check every expected name and see that it exists in the actual names list
         for(String expectedName : expectedNames) {
             Assert.assertTrue(actualNames.contains(expectedName));
