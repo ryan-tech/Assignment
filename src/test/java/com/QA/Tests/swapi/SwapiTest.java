@@ -8,17 +8,32 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 
 public class SwapiTest {
 
+    private Properties prop;
+
+    @BeforeClass
+    public void beforeClass() throws IOException {
+        prop = new Properties();
+        FileInputStream ip = new FileInputStream("src/test/java/config.properties");
+        prop.load(ip);
+    }
+
+
     @Test
     public void testPeopleEndpointResponseCode() {
         // verifies that the people endpoint responds with a successful response code
-        String url = "https://swapi.dev/api/people";
+        String url = prop.getProperty("swapiPeopleEndpoint");
         int successfulResponseCode = 200;
         given().
                 when().
@@ -31,7 +46,7 @@ public class SwapiTest {
     @Test
     public void testCountPeopleTallerThan200() throws JSONException {
         // get all people in a list
-        String url = "https://swapi.dev/api/people";
+        String url = prop.getProperty("swapiPeopleEndpoint");
         int actualNumberOfPeopleTallerThan200 = 0;
 
         // iterate through all pages of the people endpoint
@@ -74,7 +89,7 @@ public class SwapiTest {
     @Test
     public void verifyNamesOfPeopleTallerThan200() throws JSONException {
         // get all people in a list
-        String url = "https://swapi.dev/api/people";
+        String url = prop.getProperty("swapiPeopleEndpoint");
 
         ArrayList<String> expectedNames = new ArrayList<String>() {
             {
@@ -132,7 +147,7 @@ public class SwapiTest {
     @Test
     public void verifyTotalNumberOfPeople() throws JSONException {
         // get all people in a list
-        String url = "https://swapi.dev/api/people";
+        String url = prop.getProperty("swapiPeopleEndpoint");
 
         int actualCount = 0;
 

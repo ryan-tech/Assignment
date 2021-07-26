@@ -1,18 +1,21 @@
 package com.QA.Tests.Aspiration;
 import com.QA.Pages.Aspiration.Homepage;
 
+import com.QA.Pages.BasePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 
 public class testAspirationHomepage {
     private Homepage homepage;
 
     @BeforeTest
-    public void beforeTest() {
+    public void beforeTest() throws IOException {
         homepage = new Homepage();
 
     }
@@ -23,7 +26,7 @@ public class testAspirationHomepage {
 
     @BeforeMethod
     public void beforeMethod() {
-        String url = "https://aspiration.com/";
+        String url = BasePage.getProperties().getProperty("initialNavigateUrl");
         // navigate to https://aspiration.com/
         homepage.navigateTo(url);
 
@@ -33,7 +36,7 @@ public class testAspirationHomepage {
 
     @Test
     public void verifyHomepageURL() {
-        String expectedUrl = "https://www.aspiration.com/";
+        String expectedUrl = BasePage.getProperties().getProperty("expectedHomepageUrl");
 
         // check that the web driver has navigated to the expected url properly
         Assert.assertEquals(Homepage.getDriver().getCurrentUrl(), expectedUrl);
@@ -41,7 +44,7 @@ public class testAspirationHomepage {
 
     @Test
     public void verifySpendAndSaveLink() {
-        String expectedUrl = "https://www.aspiration.com/our-products";
+        String expectedUrl = BasePage.getProperties().getProperty("expectedProductsUrl");
         // click on spend and save button
         homepage.click(homepage.getSpendAndSave());
 

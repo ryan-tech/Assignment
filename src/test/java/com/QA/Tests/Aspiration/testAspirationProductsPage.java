@@ -1,6 +1,7 @@
 package com.QA.Tests.Aspiration;
 
 import com.QA.Pages.Aspiration.ProductsPage;
+import com.QA.Pages.BasePage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
@@ -16,7 +17,7 @@ public class testAspirationProductsPage{
 
     @BeforeMethod
     public void beforeMethod() {
-        ProductsPage.getDriver().get("https://www.aspiration.com/our-products");
+        ProductsPage.getDriver().get(BasePage.getProperties().getProperty("expectedProductsUrl"));
         ProductsPage.getDriver().navigate().refresh();
         productsPage.pageFactoryInit(productsPage);
     }
